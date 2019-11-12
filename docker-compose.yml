@@ -1,0 +1,19 @@
+version: '2.1'
+
+services:
+  yerbapp-api:
+    image: name/repo:latest
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+      - 9229:9229
+    links:
+      - postgres
+  postgres:
+    image: postgres:11.5
+    restart: always
+    environment:
+      - POSTGRES_DB=yerbapp
+      - POSTGRES_USER=yerbapp
+      - POSTGRES_PASSWORD=yerbanko

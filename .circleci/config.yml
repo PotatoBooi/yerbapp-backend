@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 jobs:
   build:
     docker:
@@ -21,3 +21,11 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       # run tests!
       - run: yarn test
+  deployment:
+    latest:
+      branch: master
+      commands:
+        - docker login -e $DOCKERHUB_EMAIL -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
+        - docker push name/repo:$CIRCLE_SHA1
+        - docker push name/repo:latest
+        - .scripts/deploy.sh
