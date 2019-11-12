@@ -31,3 +31,9 @@ jobs:
       - run: docker push name/repo:$CIRCLE_SHA1
       - run: docker push name/repo:latest
       - run: .scripts/deploy.sh
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build
+      - deploy
