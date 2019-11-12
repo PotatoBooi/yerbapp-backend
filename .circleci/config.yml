@@ -23,9 +23,8 @@ jobs:
       - run: yarn test
   deploy:
     latest:
-      branch: master
-      steps:
-        - run: docker login -e $DOCKERHUB_EMAIL -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
-        - run: docker push name/repo:$CIRCLE_SHA1
-        - run: docker push name/repo:latest
-        - run: .scripts/deploy.sh
+    steps:
+      - run: docker login -e $DOCKERHUB_EMAIL -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
+      - run: docker push name/repo:$CIRCLE_SHA1
+      - run: docker push name/repo:latest
+      - run: .scripts/deploy.sh
