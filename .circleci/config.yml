@@ -23,6 +23,7 @@ jobs:
       - run: yarn test
   deploy:
     latest:
+    machine: true
     steps:
       - checkout
       - setup_remote_docker
