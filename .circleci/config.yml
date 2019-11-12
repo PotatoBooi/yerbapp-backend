@@ -21,11 +21,11 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       # run tests!
       - run: yarn test
-  deployment:
+  deploy:
     latest:
       branch: master
-      commands:
-        - docker login -e $DOCKERHUB_EMAIL -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
-        - docker push name/repo:$CIRCLE_SHA1
-        - docker push name/repo:latest
-        - .scripts/deploy.sh
+        steps:
+          - run: docker login -e $DOCKERHUB_EMAIL -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
+          - run: docker push name/repo:$CIRCLE_SHA1
+          - run: docker push name/repo:latest
+          - run: .scripts/deploy.sh
