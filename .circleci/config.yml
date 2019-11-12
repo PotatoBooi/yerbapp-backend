@@ -24,6 +24,8 @@ jobs:
   deploy:
     latest:
     steps:
+      - checkout
+      - setup_remote_docker
       - run: docker login -e $DOCKERHUB_EMAIL -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
       - run: docker push name/repo:$CIRCLE_SHA1
       - run: docker push name/repo:latest
