@@ -51,5 +51,5 @@ workflows:
             branches:
               only: master
       - deploy:
-        requires:
-          - publish
+          requires:
+            - publish
