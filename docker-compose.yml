@@ -4,7 +4,7 @@ services:
   yerbapp-api:
     image: szoomy999/yerbapp-api:latest
     environment:
-      NODE_ENV: development
+      NODE_ENV: production
     ports:
       - 3000:3000
       - 9229:9229
@@ -26,8 +26,8 @@ services:
     container_name: pgadmin
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_LOGIN}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PWD}
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_LOGIN}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PWD}
     ports:
       - '${PGADMIN_PORT-5555}:80'
     volumes:
