@@ -6,6 +6,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
   cd "$DIR/.." # Go to project dir.
 
   ssh -v $DROPLET_USER@$DROPLET_IP -o StrictHostKeyChecking=no <<-EOF
+    echo '$POSTGRES_DB'
+    echo $POSTGRES_DB
     export POSTGRES_DB='$POSTGRES_DB'
     export POSTGRES_USER='$POSTGRES_USER'
     export POSTGRES_PWD='$POSTGRES_PWD'
