@@ -19,6 +19,8 @@ import { UsersResolver } from './users/users.resolver';
     GraphQLModule.forRoot({
       context: ({ req }) => ({ req }),
       playground: true,
+      introspection: true,
+      debug: true,
       autoSchemaFile: 'schema.gql',
       include: [UsersModule],
     }),
