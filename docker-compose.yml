@@ -8,7 +8,7 @@ services:
     ports:
       - 3000:3000
       - 9229:9229
-    links:
+    depends_on:
       - postgres
   postgres:
     image: postgres:11.5
@@ -29,7 +29,7 @@ services:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_LOGIN}
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PWD}
     ports:
-      - '${PGADMIN_PORT-5555}:80'
+      - '${PGADMIN_PORT:-5555}:80'
     volumes:
       - pgadmin:/root/.pgadmin
     depends_on:
@@ -38,4 +38,4 @@ services:
 
 volumes:
   postgres:
-  pgadmin:
+  pgadnim:
