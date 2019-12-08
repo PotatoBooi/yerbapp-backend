@@ -29,6 +29,10 @@ import { RolesGuard } from './auth/guards/roles.guard';
       introspection: true,
       debug: true,
       autoSchemaFile: 'schema.gql',
+      cors: true,
+      engine: {
+        apiKey: process.env.ENGINE_API_KEY,
+      },
       include: [
         UsersModule,
         ProductsModule,
