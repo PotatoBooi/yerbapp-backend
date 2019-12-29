@@ -14,6 +14,7 @@ import { ManufacturersModule } from './manufacturers/manufacturers.module';
 import { RanksModule } from './ranks/ranks.module';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './auth/guards/roles.guard';
+import { UploadService } from './upload/upload.service';
 @Module({
   imports: [
     AuthModule,
@@ -50,6 +51,6 @@ import { RolesGuard } from './auth/guards/roles.guard';
     RanksModule,
   ],
   controllers: [AppController],
-  providers: [],
+  providers: [UploadService],
 })
 export class AppModule {}
