@@ -8,4 +8,4 @@ COPY tsconfig.json .
 COPY tsconfig.build.json .
 COPY src src/
 EXPOSE 3000
-CMD ["yarn", "start:prod"]
+CMD ["yarn", "start:dev"]
